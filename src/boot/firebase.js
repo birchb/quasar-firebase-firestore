@@ -1,11 +1,13 @@
 // import * as configs from '../utils/firebase/configs.js'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-import VueFire from 'vuefire'
+// import VueFire from 'vuefire'
+import { firestorePlugin } from 'vuefire'
 require('firebase/auth')
 
 export default ({ app, router, Vue }) => {
-  Vue.use(VueFire)
+  // Vue.use(VueFire)
+  Vue.use(firestorePlugin)
 
   // Initialize app
   const currentConfig = process.env.firebaseConfig
@@ -22,7 +24,6 @@ export default ({ app, router, Vue }) => {
     Vue.prototype.$fb = firebase
     Vue.prototype.$db = firestore
   }
-
   // Add auth methods to our Vue instance
   Vue.prototype.$login = (email, password) => {
     return new Promise((resolve, reject) => {
